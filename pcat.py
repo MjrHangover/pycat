@@ -34,6 +34,9 @@ def main():
 		text = ""
 		for file in filenames:
 			if str(file) != '-':
+				# for some reason, > on windows changes encoding? Some files
+				# written in utf-16 after combining multiple file[s] > file
+				# rich output might be causing the issue?
 				try:
 					with open(file, 'r', encoding="utf-16") as f:
 						text += f.read()
